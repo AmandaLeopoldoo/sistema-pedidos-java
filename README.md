@@ -2,6 +2,7 @@
 ![Status](https://img.shields.io/badge/status-concluído-brightgreen)
 ![Java](https://img.shields.io/badge/Java-8+-orange)
 ![Licença](https://img.shields.io/badge/licença-MIT-green)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Perfil-blue?logo=linkedin)](https://www.linkedin.com/in/amandaleopoldo)
 
 # 🛒 Sistema de Gerenciamento de Pedidos
 
