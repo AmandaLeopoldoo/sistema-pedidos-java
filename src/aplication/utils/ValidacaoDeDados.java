@@ -6,17 +6,20 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ * Classe utilitária para validação e leitura de dados no sistema de pedidos.
+ */
 public class ValidacaoDeDados {
 
     public static StatusPedido lerStatusPedido(Scanner sc){
         StatusPedido statusPedido = null;
         while (statusPedido == null){
-            System.out.print("Nível: ");
+            System.out.print("Status do pedido (PAGAMENTO_PENDENTE, PROCESSANDO, ENVIADO, ENTREGUE): ");
             String status = sc.nextLine().toUpperCase();
             try {
                 statusPedido = StatusPedido.valueOf(status);
             } catch (IllegalArgumentException e) {
-                System.out.println("Status inválido! Use PAGAMENTO_PENDENTE, PROCESSANDO, ENVIADO, ENTREGUE.");
+                System.out.println("Status inválido! Use PAGAMENTO_PENDENTE, PROCESSANDO, ENVIADO ou ENTREGUE.");
             }
         }
         return statusPedido;
@@ -26,7 +29,7 @@ public class ValidacaoDeDados {
         LocalDate dataAniversario = null;
         boolean dataValida = false;
         while (!dataValida){
-            System.out.print("Data (DD/MM/AAAA): ");
+            System.out.print("Data de nascimento (DD/MM/AAAA): ");
             String data = sc.nextLine();
             try {
                 dataAniversario = LocalDate.parse(data, formatter);
@@ -35,7 +38,7 @@ public class ValidacaoDeDados {
                 System.out.println("Data inválida! Use o formato (DD/MM/AAAA).");
             }
         }
-        return  dataAniversario;
+        return dataAniversario;
     }
 
     public static boolean emailValido(String email) {
@@ -58,20 +61,20 @@ public class ValidacaoDeDados {
         return email;
     }
 
-    public static int lerQuantidadeItems(Scanner sc){
+    public static int lerQuantidadeItens(Scanner sc){
         int quantidade = 0;
         boolean quantidadeValida = false;
         while (!quantidadeValida){
-            System.out.print("Qual a quantidade de items do pedido? ");
+            System.out.print("Qual a quantidade de itens do pedido? ");
             try {
                 quantidade = Integer.parseInt(sc.nextLine());
                 if (quantidade <= 0){
-                    System.out.println("A quantidade não pode ser zero ou negativo!.");
+                    System.out.println("A quantidade não pode ser zero ou negativa.");
                 } else {
                     quantidadeValida = true;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Digite uma quantidade válida!.");
+                System.out.println("Digite uma quantidade válida!");
             }
         }
         return quantidade;
@@ -85,12 +88,12 @@ public class ValidacaoDeDados {
             try {
                 quantidade = Integer.parseInt(sc.nextLine());
                 if (quantidade <= 0){
-                    System.out.println("A quantidade não pode ser zero ou negativo!.");
+                    System.out.println("A quantidade não pode ser zero ou negativa.");
                 } else {
                     quantidadeValida = true;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Digite a quantidade: ");
+                System.out.println("Digite uma quantidade válida!");
             }
         }
         return quantidade;
@@ -98,22 +101,20 @@ public class ValidacaoDeDados {
 
     public static double lerPreco(Scanner sc){
         double preco = 0;
-        boolean precovalido = false;
-        while (!precovalido){
+        boolean precoValido = false;
+        while (!precoValido){
             System.out.print("Preço do produto: ");
             try {
                 preco = Double.parseDouble(sc.nextLine());
                 if (preco < 0) {
-                    System.out.println("O preço não pode ser negativo!.");
+                    System.out.println("O preço não pode ser negativo!");
                 } else {
-                    precovalido = true;
+                    precoValido = true;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Digite um valor numérico para o salário.");
+                System.out.println("Digite um valor numérico para o preço.");
             }
         }
         return preco;
     }
-
 }
-

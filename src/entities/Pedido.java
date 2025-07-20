@@ -15,7 +15,7 @@ public class Pedido {
     private StatusPedido status;
 
     private Cliente cliente;
-    List<ItemsPedido> pedidos = new ArrayList<>();
+    List<ItemPedido> itens = new ArrayList<>();
 
     public Pedido() {
     }
@@ -42,21 +42,21 @@ public class Pedido {
         this.status = status;
     }
 
-    public List<ItemsPedido> getPedidos() {
-        return pedidos;
+    public List<ItemPedido> getItens() {
+        return itens;
     }
 
-    public void addpedido(ItemsPedido pedido){
-        pedidos.add(pedido);
+    public void addpedido(ItemPedido pedido){
+        itens.add(pedido);
     }
 
-    public void removerPedido(ItemsPedido pedido){
-        pedidos.remove(pedido);
+    public void removerPedido(ItemPedido pedido){
+        itens.remove(pedido);
     }
 
     public double total(){
         double soma = 0;
-        for (ItemsPedido p : pedidos){
+        for (ItemPedido p : itens){
             soma += p.subTotal();
         }
         return soma;
@@ -64,12 +64,14 @@ public class Pedido {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("\n-----------------------------------");
         sb.append("\nRESUMO DO PEDIDO: ");
-        sb.append("\nMomento do Pedido: " + dataHoraFormato.format(momento));
+        sb.append("\n-----------------------------------");
+        sb.append("Momento do Pedido: " + dataHoraFormato.format(momento));
         sb.append("\nStatus do pedido: " + status);
-        sb.append("\nClient: " + cliente.getNomeCliente() +" "+ cliente.getDataAniversario() + " - " + cliente.getEmail());
+        sb.append("\nClient: " + cliente);
         sb.append("\nItems do pedido: ");
-        for (ItemsPedido item : pedidos){
+        for (ItemPedido item : itens){
             sb.append("\n" + item + "\n");
         }
         sb.append("Valor total: " + String.format("%.2f", total()));

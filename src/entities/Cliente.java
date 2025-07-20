@@ -40,4 +40,9 @@ public class Cliente {
     public void setDataAniversario(LocalDate dataAniversario) {
         this.dataAniversario = dataAniversario;
     }
+
+    @Override
+    public String toString() {
+        return nomeCliente + " (" + dataAniversario + ") - " + email;
+    }
 }

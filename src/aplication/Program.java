@@ -2,7 +2,7 @@ package aplication;
 
 import aplication.utils.ValidacaoDeDados;
 import entities.Cliente;
-import entities.ItemsPedido;
+import entities.ItemPedido;
 import entities.Pedido;
 import entities.Produto;
 import entities.enums.StatusPedido;
@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class program {
+public class Program {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
@@ -32,7 +32,7 @@ public class program {
 
         System.out.println("\nDigite os dados do pedido: ");
         StatusPedido status = ValidacaoDeDados.lerStatusPedido(sc);
-        int items = ValidacaoDeDados.lerQuantidadeItems(sc);
+        int items = ValidacaoDeDados.lerQuantidadeItens(sc);
 
 
         Pedido pedido = new Pedido(datahora,status,cliente);
@@ -45,13 +45,11 @@ public class program {
             int quantidade = ValidacaoDeDados.lerQuantidade(sc);
 
             Produto produto = new Produto(nomePedido, preco);
-            ItemsPedido itemspedido = new ItemsPedido(quantidade,preco,produto);
+            ItemPedido itemspedido = new ItemPedido(quantidade,preco,produto);
             pedido.addpedido(itemspedido);
         }
 
         System.out.println(pedido);
-
-
 
         sc.close();
     }
