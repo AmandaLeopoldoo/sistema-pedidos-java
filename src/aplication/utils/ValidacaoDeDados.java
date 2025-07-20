@@ -26,7 +26,7 @@ public class ValidacaoDeDados {
         LocalDate dataAniversario = null;
         boolean dataValida = false;
         while (!dataValida){
-            System.out.println("Data (DD/MM/AAAA): ");
+            System.out.print("Data (DD/MM/AAAA): ");
             String data = sc.nextLine();
             try {
                 dataAniversario = LocalDate.parse(data, formatter);
@@ -43,11 +43,26 @@ public class ValidacaoDeDados {
         return email != null && email.matches(emailRegex);
     }
 
+    public static String lerEmailValido(Scanner sc) {
+        String email;
+        boolean emailValido = false;
+        do {
+            System.out.print("Digite o e-mail: ");
+            email = sc.nextLine();
+            if (!ValidacaoDeDados.emailValido(email)) {
+                System.out.println("E-mail inválido! Tente novamente.");
+            } else {
+                emailValido = true;
+            }
+        } while (!emailValido);
+        return email;
+    }
+
     public static int lerQuantidadeItems(Scanner sc){
         int quantidade = 0;
         boolean quantidadeValida = false;
         while (!quantidadeValida){
-            System.out.println("Qual a quantidade de items do pedido? ");
+            System.out.print("Qual a quantidade de items do pedido? ");
             try {
                 quantidade = Integer.parseInt(sc.nextLine());
                 if (quantidade <= 0){
@@ -66,7 +81,7 @@ public class ValidacaoDeDados {
         int quantidade = 0;
         boolean quantidadeValida = false;
         while (!quantidadeValida){
-            System.out.println("Quantidade: ");
+            System.out.print("Quantidade: ");
             try {
                 quantidade = Integer.parseInt(sc.nextLine());
                 if (quantidade <= 0){
@@ -85,7 +100,7 @@ public class ValidacaoDeDados {
         double preco = 0;
         boolean precovalido = false;
         while (!precovalido){
-            System.out.println("Preço do produto: ");
+            System.out.print("Preço do produto: ");
             try {
                 preco = Double.parseDouble(sc.nextLine());
                 if (preco < 0) {
