@@ -46,12 +46,12 @@ public class Pedido {
         return itens;
     }
 
-    public void addpedido(ItemPedido pedido){
-        itens.add(pedido);
+    public void adicionarItem(ItemPedido item){
+        itens.add(item);
     }
 
-    public void removerPedido(ItemPedido pedido){
-        itens.remove(pedido);
+    public void removerItem(ItemPedido item){
+        itens.remove(item);
     }
 
     public double total(){
@@ -66,15 +66,17 @@ public class Pedido {
         StringBuilder sb = new StringBuilder();
         sb.append("\n-----------------------------------");
         sb.append("\nRESUMO DO PEDIDO: ");
-        sb.append("\n-----------------------------------");
+        sb.append("\n-----------------------------------\n");
         sb.append("Momento do Pedido: " + dataHoraFormato.format(momento));
         sb.append("\nStatus do pedido: " + status);
         sb.append("\nClient: " + cliente);
-        sb.append("\nItems do pedido: ");
+        sb.append("\nItens do pedido: \n");
         for (ItemPedido item : itens){
-            sb.append("\n" + item + "\n");
+            sb.append(item + "\n");
         }
-        sb.append("Valor total: " + String.format("%.2f", total()));
+        sb.append("-----------------------------------");
+        sb.append("\nValor total: " + String.format("R$%.2f", total()));
+        sb.append("\n-----------------------------------\n");
         return sb.toString();
     }
 
